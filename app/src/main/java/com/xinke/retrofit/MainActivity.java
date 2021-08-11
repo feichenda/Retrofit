@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -96,6 +97,45 @@ public class MainActivity extends AppCompatActivity {
                     public void onNext(@NonNull BaseModel baseModel) {
                         showToast(baseModel.getMsg());
                         Log.e("aaa", baseModel.getMsg());
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        showToast("error");
+                        Log.e("aaa", e.toString());
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        showToast("complete");
+                        Log.e("aaa", "ccc");
+                    }
+                });
+    }
+
+    @OnClick(R.id.postbody)
+    public void postBody() {
+        OutTask task = new OutTask(new ArrayList<>(),new ArrayList<>(),"2021-7-29 12:00","请及时配送，谢谢！");
+        Retrofit retrofit = new Retrofit.Builder()
+                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(RequestApi.BaseUrl)
+                .build();
+        RequestApi api = retrofit.create(RequestApi.class);
+        api.createStockOutTask(task)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<BaseModel<OutTask>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+                        showToast("start");
+                        Log.e("aaa", "aaa");
+                    }
+
+                    @Override
+                    public void onNext(@NonNull BaseModel<OutTask> outTaskBaseModel) {
+                        showToast("success");
+                        Log.e("aaa", "success");
                     }
 
                     @Override

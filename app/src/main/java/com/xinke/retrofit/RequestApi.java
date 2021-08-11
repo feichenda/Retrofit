@@ -1,10 +1,8 @@
 package com.xinke.retrofit;
 
-import java.util.List;
-import java.util.Map;
-
 
 import io.reactivex.rxjava3.core.Observable;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -23,4 +21,7 @@ public interface RequestApi {
     @FormUrlEncoded
     @POST("api/addUserPosition")
     Observable<BaseModel> addUserPosition(@Field("id") String id,@Field("xAxis") String xAxis,@Field("yAxis") String yAxis);
+
+    @POST("api/json/createStockOutTask")
+    Observable<BaseModel<OutTask>> createStockOutTask(@Body OutTask outTask);
 }

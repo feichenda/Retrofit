@@ -75,14 +75,14 @@
         android:textSize="14sp"
         />
     <Button
-        android:id="@+id/uploadMore"
+        android:id="@+id/postbody"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="20dp"
         android:background="@color/color_4caf50"
-        android:text="上传多文件"
+        android:text="postbody"
         android:textColor="@color/color_white"
         android:textSize="14sp"
         />
