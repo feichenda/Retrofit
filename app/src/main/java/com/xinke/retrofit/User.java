@@ -2,7 +2,12 @@ package com.xinke.retrofit;
 
 import java.util.Arrays;
 
+
 public class User {
+    /**
+     * 和你接口返回的data的参数类型名字保持一致
+     */
+
     private String userid;
     private String name;
     private int[] department;
