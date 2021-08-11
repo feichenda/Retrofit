@@ -3,60 +3,40 @@ package com.xinke.retrofit;
 import java.util.List;
 
 public class BaseModel<T> {
-    private int code;
-    private String message;
-    private T data;
-    private List<T> datas;
-
-    public BaseModel(int code, String message, T data, List<T> datas) {
-        this.code = code;
-        this.message = message;
-        this.data = data;
-        this.datas = datas;
-    }
-
-    public BaseModel() {
-    }
+    private Integer code;
+    private String msg;
+    private List<T> data;
 
     @Override
     public String toString() {
         return "BaseModel{" +
                 "code=" + code +
-                ", message='" + message + '\'' +
+                ", msg='" + msg + '\'' +
                 ", data=" + data +
-                ", datas=" + datas +
                 '}';
     }
 
-    public int getCode() {
+    public Integer getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 
-    public String getMessage() {
-        return message;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
-    public T getData() {
+    public List<T> getData() {
         return data;
     }
 
-    public void setData(T data) {
+    public void setData(List<T> data) {
         this.data = data;
-    }
-
-    public List<T> getDatas() {
-        return datas;
-    }
-
-    public void setDatas(List<T> datas) {
-        this.datas = datas;
     }
 }

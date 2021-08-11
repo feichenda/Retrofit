@@ -51,14 +51,14 @@
         android:textSize="13sp" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/gettext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="20dp"
         android:background="@color/color_4caf50"
-        android:text="登录"
+        android:text="获取"
         android:textColor="@color/color_white"
         android:textSize="14sp" />
 
@@ -92,5 +92,10 @@
         android:id="@+id/image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/result" />
 
 </LinearLayout>
