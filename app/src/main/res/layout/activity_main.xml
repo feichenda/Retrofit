@@ -58,7 +58,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginRight="20dp"
         android:background="@color/color_4caf50"
-        android:text="获取"
+        android:text="get"
         android:textColor="@color/color_white"
         android:textSize="14sp" />
 
