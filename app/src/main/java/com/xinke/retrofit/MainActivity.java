@@ -1,7 +1,5 @@
 package com.xinke.retrofit;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -17,6 +15,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.annotations.Nullable;
 import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
@@ -58,6 +58,44 @@ public class MainActivity extends AppCompatActivity {
                         textView.setText(users.toString());
                         showToast("next");
                         Log.e("aaa", users.toString());
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        showToast("error");
+                        Log.e("aaa", e.toString());
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        showToast("complete");
+                        Log.e("aaa", "ccc");
+                    }
+                });
+    }
+
+    @OnClick(R.id.posttext)
+    public void postText() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(RequestApi.BaseUrl)
+                .build();
+        RequestApi api = retrofit.create(RequestApi.class);
+        api.addUserPosition("MoYi", "1.1", "1.2")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<BaseModel>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+                        showToast("start");
+                        Log.e("aaa", "aaa");
+                    }
+
+                    @Override
+                    public void onNext(@NonNull BaseModel baseModel) {
+                        showToast(baseModel.getMsg());
+                        Log.e("aaa", baseModel.getMsg());
                     }
 
                     @Override

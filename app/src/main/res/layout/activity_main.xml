@@ -63,14 +63,14 @@
         android:textSize="14sp" />
 
     <Button
-        android:id="@+id/upload"
+        android:id="@+id/posttext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="20dp"
         android:background="@color/color_4caf50"
-        android:text="上传文件"
+        android:text="post"
         android:textColor="@color/color_white"
         android:textSize="14sp"
         />
